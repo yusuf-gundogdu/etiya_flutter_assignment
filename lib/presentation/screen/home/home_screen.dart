@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../book/list/list_screen.dart';
 
 /// Home screen of the application. It is the first screen that user sees when
 /// the application is opened. It contains a button to navigate to the book list
@@ -14,22 +13,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-        centerTitle: true,
-      ),
+      appBar: _buildAppBar(),
       body: Column(
         children: [
           Center(
-            child: ElevatedButton(
-              onPressed: () async {
-                Get.toNamed('/book_list');
-              },
-              child: const Text('Get Book List'),
-            ),
+            child: _buildElevatedButton(),
           ),
         ],
       ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: const Text('Home Screen'),
+      centerTitle: true,
+    );
+  }
+
+  ElevatedButton _buildElevatedButton() {
+    return ElevatedButton(
+      onPressed: () async {
+        Get.toNamed('/book_list');
+      },
+      child: const Text('Get Book List'),
     );
   }
 }

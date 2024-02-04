@@ -20,16 +20,7 @@ class GetListBlocWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: state.list.length,
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.toNamed('/book_detail', arguments: state.list[index]);
-                },
-                child: BookCard(
-                  id: state.list[index].id,
-                  title: state.list[index].title,
-                  author: state.list[index].author,
-                ),
-              );
+              return _buildGestureDetector(state, index);
             },
           );
         } else if (state is GetBookListFailure) {
@@ -37,6 +28,23 @@ class GetListBlocWidget extends StatelessWidget {
         }
         return const Center(child: CircularProgressIndicator());
       },
+    );
+  }
+
+  GestureDetector _buildGestureDetector(GetBookListLoaded state, int index) {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed('/book_detail', arguments: state.list[index]);
+      },
+      child: _buildBookCard(state, index),
+    );
+  }
+
+  BookCard _buildBookCard(GetBookListLoaded state, int index) {
+    return BookCard(
+      id: state.list[index].id,
+      title: state.list[index].title,
+      author: state.list[index].author,
     );
   }
 }

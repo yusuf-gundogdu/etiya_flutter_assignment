@@ -32,13 +32,13 @@ class BookDetail extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Text("Author: ${author}"),
-              Text("Category: ${category}"),
+              Text("Author: $author"),
+              Text("Category: $category"),
               const SizedBox(height: 16),
               Text(
-                "Description: ${description}",
+                "Description: $description",
                 textAlign: TextAlign.justify,
               ),
             ],
